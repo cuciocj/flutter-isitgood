@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class Search extends StatelessWidget {
   @override
@@ -25,8 +26,18 @@ class SearchFormState extends State<SearchForm> {
   void _handleSubmit() {
     if(_formKey.currentState.validate()) {
       _formKey.currentState.save();
-      // handle search logic
 
+      // TODO: handle search logic
+      String apikey = DotEnv().env['API_KEY'];
+      print('apikey: $apikey');
+
+      Navigator.pushNamed(
+        context,
+        '/results',
+        arguments: <String, String>{
+          'query': searchQuery
+        }
+      );
     } else {
       searchQuery = '';
     }
@@ -35,7 +46,7 @@ class SearchFormState extends State<SearchForm> {
 
   String _validateSearch(String value) {
     print('validate: $value');
-    return value.isEmpty ? 'Movie or tv title is required' : null;
+    return value.isEmpty ? 'Movie or TV title is required' : null;
   }
 
   @override
@@ -67,7 +78,7 @@ class SearchFormState extends State<SearchForm> {
                     maxLines: 1,
                     validator: (value) => _validateSearch(value),
                     onSaved: (value) {
-                      searchQuery = value;
+                      searchQuery = value.trim();
                     },
                   ),
                   sizedBox,
