@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Is It Good App',
       initialRoute: '/',
-      routes: Router.getRoutes(),
+      routes: Router.getRoutes(context),
       theme: ThemeData(
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,

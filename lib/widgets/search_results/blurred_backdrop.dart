@@ -2,22 +2,23 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-class BlurredImage extends StatelessWidget {
+class BlurredBackdrop extends StatelessWidget {
   final String imagePath;
 
-  BlurredImage(this.imagePath);
+  BlurredBackdrop(this.imagePath);
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.width * 0.5;
+    // double height = MediaQuery.of(context).size.width * 0.5;
     
     return Container(
-      height: height,
+      // height: height,
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: NetworkImage(
-            this.imagePath,
-          ),
+          image: this.imagePath == null ?
+            // TODO: avoid hardcoded string
+            AssetImage('assets/images/backdrop_placeholder.png') :
+            NetworkImage('http://image.tmdb.org/t/p/w780/${this.imagePath}'),
           fit: BoxFit.cover
         ),
       ),

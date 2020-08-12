@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_isitgood/model/movie_list.dart';
+import 'package:flutter_isitgood/services/tmdb_api.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
@@ -26,10 +28,6 @@ class SearchFormState extends State<SearchForm> {
   void _handleSubmit() {
     if(_formKey.currentState.validate()) {
       _formKey.currentState.save();
-
-      // TODO: handle search logic
-      String apikey = DotEnv().env['API_KEY'];
-      print('apikey: $apikey');
 
       Navigator.pushNamed(
         context,
