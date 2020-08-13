@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_isitgood/routes/routes.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Search extends StatelessWidget {
@@ -28,7 +29,7 @@ class SearchFormState extends State<SearchForm> {
 
       Navigator.pushNamed(
         context,
-        '/results',
+        Routes.searchResultRoute,
         arguments: <String, String>{
           'query': searchQuery
         }
@@ -48,6 +49,7 @@ class SearchFormState extends State<SearchForm> {
   Widget build(BuildContext context) {
     const sizedBox = SizedBox(height: 24);
 
+    // TODO: refactor Form
     return new Scaffold(
       body: Center(
         child: Form(
