@@ -1,25 +1,40 @@
+import 'package:flutter_isitgood/model/genre.dart';
+
 class Movie {
   int id;
-  String name = 'hehe';
-  String overview = 'overview here';
-  String posterPath = 'http://image.tmdb.org/t/p/w780/vBaLz8kZNXYvTjHwrTewkTw3l7k.jpg';
-  String backdropPath = 'http://image.tmdb.org/t/p/w780/ApiBzeaa95TNYliSbQ8pJv4Fje7.jpg';
+  int voteCount;
+  num popularity;
+  num voteAverage;
+  String name;
+  String overview;
+  String posterPath;
+  String backdropPath;
+  String releaseDate;
+  List<Genre> genres;
 
   Movie({
     this.id,
+    this.voteCount,
+    this.popularity,
+    this.voteAverage,
     this.name,
     this.overview,
     this.posterPath,
-    this.backdropPath
+    this.backdropPath,
+    this.releaseDate
   });
 
   factory Movie.fromJson(Map<String, dynamic> json) {
     return Movie(
       id: json['id'],
+      voteCount: json['vote_count'],
+      popularity: json['popularity'],
+      voteAverage: json['vote_average'],
       name: json['title'],
       overview: json['overview'],
       posterPath: json['poster_path'],
-      backdropPath: json['backdrop_path']
+      backdropPath: json['backdrop_path'],
+      releaseDate: json['release_date']
     );
   }
 }
