@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter_isitgood/model/movie.dart';
 
 class MovieList {

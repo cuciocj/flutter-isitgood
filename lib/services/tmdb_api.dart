@@ -5,11 +5,11 @@ import 'dart:convert';
 
 class APIProvider {
 
-  final String BASE_URL = 'https://api.themoviedb.org/3/';
-  final String API_KEY = DotEnv().env['API_KEY'];
+  final String baseURL = 'https://api.themoviedb.org/3/';
+  final String apiKey = DotEnv().env['API_KEY'];
 
   Future<MovieList> findByTitle(String title) async {
-    String urlRequest = BASE_URL + 'search/movie?api_key=$API_KEY&query=$title';
+    String urlRequest = baseURL + 'search/movie?api_key=$apiKey&query=$title';
     print('$urlRequest');
     http.Response response = await http.get(urlRequest);
 
