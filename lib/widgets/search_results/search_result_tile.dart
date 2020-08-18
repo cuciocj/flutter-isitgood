@@ -29,7 +29,7 @@ class SearchResultTileState extends State<SearchResultTile> {
 
     return Container(
       height: listItemTileHeight,
-      child: Stack(
+      child: Stack( // extract title and other details part from Stack
         children: <Widget>[
           BlurredBackdrop(widget.movie.backdropPath),
           Padding(
@@ -48,17 +48,17 @@ class SearchResultTileState extends State<SearchResultTile> {
                       ),
                   ),
                 ),
-                Container(
-                  width: 250.0,
+                Expanded(
+                  // width: double.infinity,
                   // color: Colors.yellow,
-                  padding: EdgeInsets.only(left: 15, top: 10),
+                  // padding: EdgeInsets.only(left: 15, top: 10),
                   child: Column(
                     children: [
                       Flexible(
                         flex: 0,
                         child: Container( // TODO: refactor movie title section
                           width: double.infinity,
-                          // color: Colors.purple,
+                          padding: EdgeInsets.only(left: 15),
                           child: Text(
                             widget.movie.name,
                             style: GoogleFonts.openSans(
@@ -78,10 +78,10 @@ class SearchResultTileState extends State<SearchResultTile> {
                         ),
                       ),
                       Flexible(
-                        fit: FlexFit.tight,
+                        // fit: FlexFit.tight,
                         child: Container( // TODO: refactor movie release date
                           width: double.infinity,
-                          // color: Colors.pink[200],
+                          padding: EdgeInsets.only(left: 15),
                           child: Text(widget.movie.releaseDate != '' ?
                             transformStringDate(
                               '${widget.movie.releaseDate}',
@@ -105,7 +105,7 @@ class SearchResultTileState extends State<SearchResultTile> {
                       ),
                       Flexible(
                         child: Container( // TODO: refactor genre list
-                          // color: Colors.purple,
+                          padding: EdgeInsets.only(left: 15),
                           width: double.infinity,
                           child: Text('Drama | Action | Comedy',
                               style: GoogleFonts.openSans(
@@ -124,7 +124,7 @@ class SearchResultTileState extends State<SearchResultTile> {
                       ),
                       Flexible(
                         child: Container( // TODO: refactor rating
-                          // color: Colors.green,
+                          padding: EdgeInsets.only(left: 15),
                           alignment: Alignment.centerLeft,
                           // transform: Matrix4.translationValues(0.0, 0.0, 0.0),
                           child: LinearPercentIndicator(
@@ -162,7 +162,7 @@ class SearchResultTileState extends State<SearchResultTile> {
                         fit: FlexFit.tight,
                         child: SingleChildScrollView(
                           child: Container(
-                            // color: Colors.green,
+                            padding: EdgeInsets.only(left: 15),
                             child: Text(
                               widget.movie.overview,
                               style: GoogleFonts.openSans(
